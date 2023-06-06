@@ -1,0 +1,51 @@
+Etapas do Projeto 1 - Aplicação de Métodos de Aprendizagem de Máquina
+
+ETAPA 1
+	delimitar um tema do projeto. 			   ok
+	descrever de forma direta o objetivo da aplicação. ok
+	descrever os detalhes da base de dados e quais os
+	métodos de machine learning e as avaliações.	   ok
+ETAPA 2
+	aplicar métodos de pré-processamento  		   ok
+	dividir em teste e treino ou Cross-validation	   ok
+	  Desenvolvimento do código:
+	. conecão com a base de dados ok
+	. exibir trecho da base ok
+	. explicar cada método de pré-processamento ___
+	. aplicar os métodos ___
+	. treino e teste ___
+	. Algoritimo de machine learning (e seus motivos)
+	. Metricas de avaliação ()
+	. -- Deve ser feito aqui uma reflexão sobre os resultados
+obtidos e quais
+as ideias das proximas etapas ok.
+
+
+ PREPARAÇÃO DE DADOS
+- Coleta
+- Enriquecimento
+* LIMPEZA, TRANSFORMAÇÃO E REDUÇÃO
+- Limpeza de informações ausentes
+- Limpeza de inconsistência
+- Limpeza de valores não pertencente ao domínio 
+- Limpeza de valores redundantes
+- Discretização 
+- Normalização
+- Calibração
+- (Codificação de dados categóricos) 
+- (Redução de dados)
+* ANÁLISE EXPLORATÓRIA
+- Sumário de 5 números
+- Exinição de caule e folhas
+- exibição de scatterplot matrix
+- exibição por outliers
+- residual plot
+- bag plot
+- smoother
+- robust variante
+- reexpression
+- median polish
+-- nas vizualizações de dados --
++ Graficos para valores numéricos e categóricos
++ Medidas de dispersão
++ Graáficos de pares seaborn
