@@ -1,0 +1,17 @@
+Projeto I - Aplicação de Métodos de Aprendizagem de Máquina - Exemplo de uma entrega Etapa III
+
+
+> Motivos, razões pelos quais foi feito e quais os tipos de modelos de machine learning e tipos de tratamento foram usadas, descrição sobre os problemas e as soluções 
+> Objetivos, descrição sucuta e objetiva sobre para que serve o projeto
+> Especificação Técnica 
+ . dataset usado
+ . formato dos dados
+ . features utilizadas (treino e teste)
+ . *Combinações para treinamento e teste será: ?% tran e ?% test
+ . DESCRIÇÃO DAS FEATURES
+> Métodos de Pré-processamento
+> Tarefa de Aprendizado: Será aplicado a tarefa de Regressão 
+> Modos de aprendizado: Supervisionado
+> Algoritmos Avaliados:
+> Métrica utilizadas:
+
