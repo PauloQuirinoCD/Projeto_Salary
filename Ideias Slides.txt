@@ -1,0 +1,30 @@
+Projeto I - Aplicação de Métodos de Aprendizagem de Máquina - Exemplo de uma entrega Etapa III
+
+
+> Motivos, razões pelos quais foi feito e quais os tipos de modelos de machine learning e tipos de tratamento foram usadas, descrição sobre os problemas e as soluções 
+> Objetivos, descrição sucuta e objetiva sobre para que serve o projeto
+> Especificação Técnica 
+ . dataset usado
+ . formato dos dados
+ . features utilizadas (treino e teste)
+ . *Combinações para treinamento e teste será: ?% tran e ?% test
+ . DESCRIÇÃO DAS FEATURES
+> Métodos de Pré-processamento
+> Tarefa de Aprendizado: Será aplicado a tarefa de Regressão 
+> Modos de aprendizado: Supervisionado
+> Algoritmos Avaliados:
+> Métrica utilizadas:
+
+# https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2023/06/senado-aprova-projeto-de-lei-que-reforca-igualdade-salarial-entre-homens-e-mulheres
+
+Fazer o treinamento sem a coluna sexo!
+- Com o que foi percebido durante a análie exploratória e de acordo com a lei nacional sobre igualdade salarial o modelo foi treinado sem a coluna sexo, já que por lei aqui no Brasil genero não é mais um fator determinante quando se refere a remuneção por serviços e trabalhos e todas as categorias.  
+
+REFERENCIA:
+
+https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2023/06/senado-aprova-projeto-de-lei-que-reforca-igualdade-salarial-entre-homens-e-mulheres#:~:text=Senado%20aprova%20projeto%20de%20lei%20que%20refor%C3%A7a%20igualdade%20salarial%20entre%20homens%20e%20mulheres,-De%20autoria%20do&text=O%20Plen%C3%A1rio%20do%20Senado%20Federal,Consolida%C3%A7%C3%A3o%20das%20Leis%20do%20Trabalho.
+
+contendo o link do projeto de lei. 
+
+link do repositório github
+
