@@ -1,9 +1,0 @@
-Dos três modelos mencionados, a Regressão Linear e o Support Vector Machines (SVM) são mais sensíveis à falta de padronização ou normalização dos dados. Por outro lado, as Árvores de Decisão são menos afetadas por esse problema.
-
-A Regressão Linear pressupõe que as variáveis independentes estejam na mesma escala para que os coeficientes sejam interpretáveis corretamente. Se as variáveis independentes tiverem escalas muito diferentes, aquelas com valores maiores terão um impacto desproporcional nos coeficientes do modelo. Portanto, é recomendável padronizar ou normalizar as variáveis antes de aplicar a Regressão Linear para garantir uma interpretação correta dos coeficientes.
-
-O SVM também pode ser afetado pela escala dos dados, uma vez que calcula distâncias entre pontos de dados. Se as variáveis independentes tiverem escalas muito diferentes, a influência das variáveis com escalas maiores pode dominar o modelo. Portanto, é aconselhável padronizar ou normalizar as variáveis antes de ajustar um SVM.
-
-Por outro lado, as Árvores de Decisão não são sensíveis à escala dos dados. Elas tomam decisões com base em regras de divisão nas variáveis independentes, que não são afetadas pela escala dos dados. Portanto, a padronização ou normalização dos dados não é necessária ao utilizar Árvores de Decisão.
-
-É importante observar que, embora a padronização ou normalização dos dados possa ser necessária para alguns modelos, pode não ser obrigatória em todos os casos. É sempre recomendável considerar o contexto específico do problema, o tipo de dados e o desempenho do modelo ao decidir se é necessário padronizar ou normalizar as variáveis.

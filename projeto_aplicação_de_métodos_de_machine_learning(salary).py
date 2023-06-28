@@ -11,7 +11,7 @@ Original file is located at
 **Nome do Acadêmico:** Paulo Quirino
 **Matrícula:** 3667379
 
-# Projeto I - Aplicação de Métodos de Aprendizagem de Máquina - Etapa III
+# Projeto I - Aplicação de Métodos de Aprendizagem de Máquina
 
 ## Estimar o valor de salário na área de Tecnologia
 
@@ -117,7 +117,6 @@ plt.legend()
 plt.show(figura)
 
 # Aqui foi feito um gráfico 3d, para termos uma visão mais clara sobre  variávei numéricas e suas fortes correlações.
-# CONFIGURAR OS ESPAÇAMENTOS
 
 fig = plt.figure(figsize=(20, 6))
 ax = fig.add_subplot(111, projection='3d')
@@ -133,7 +132,6 @@ ax.set_zlabel('Salário')
 # Exibição do gráfico
 plt.show()
 
-#CONFIGURAR DEPOIS O TAMANHO DA FONTE DO ROTULOS
 fig = plt.figure(figsize=(18, 3))
 fig.suptitle('Distribuição das variáveis númericas')
 
@@ -303,11 +301,6 @@ dados_Sem_Genero = dados.drop('Gender', axis=1)
 dados_Sem_Genero = pd.get_dummies(dados_Sem_Genero, columns=['Categoria_titulo_trabalho'])
 dados_Sem_Genero.head(5)
 
-# SEGUNDO DATASET NÃO NORMALIADO E SEM A VARIÁVEL Categoria_titulo_trabalho
-#dados_Sem_JobTitle = dados.drop('Categoria_titulo_trabalho', axis=1)
-#dados_Sem_JobTitle = pd.get_dummies(dados_Sem_JobTitle, columns=['Gender'])
-#dados_Sem_JobTitle.head(5)
-
 # POR FIM COM TODAS AS VARIÁVEIS MAS NÃO NORMALIZADOS
 dados = pd.get_dummies(dados, columns=['Gender', 'Categoria_titulo_trabalho'])# aplicando o get_dummnies nas colunas Gender e Title no dataset com todas as colunas
 dados.head(5)
@@ -320,9 +313,6 @@ X_semgereno = dados_Sem_Genero.drop('Salary', axis=1)
 y_SemGenero = dados_Sem_Genero['Salary']
 
 # X e y _Sem_	Categoria_titulo_trabalho e não normalizado
-
-#X_SemTitulo = dados_Sem_JobTitle.drop('Salary', axis=1)
-#y_SemTitulo = dados_Sem_JobTitle['Salary']
 
 # X e y _Com_todas_Variáveis e não normalizado
 
@@ -346,11 +336,6 @@ dadosNOR_Sem_Genero = dadosNOR.drop('Gender', axis=1)
 dadosNOR_Sem_Genero = pd.get_dummies(dadosNOR_Sem_Genero, columns=['Categoria_titulo_trabalho'])
 dadosNOR_Sem_Genero.head(5)
 
-# SEGUNDO DATASET NORMALIADO E SEM A VARIÁVEL Categoria_titulo_trabalho
-#dadosNOR_Sem_JobTitle = dadosNOR.drop('Categoria_titulo_trabalho', axis=1)
-#dadosNOR_Sem_JobTitle = pd.get_dummies(dadosNOR_Sem_JobTitle, columns=['Gender'])
-#dadosNOR_Sem_JobTitle.head(5)
-
 # DADOS COMPLETOS E NORMALIZADOS
 dadosNOR = pd.get_dummies(dadosNOR, columns=['Gender', 'Categoria_titulo_trabalho'])
 dadosNOR.head(5)
@@ -360,10 +345,6 @@ dadosNOR.head(5)
 # DADOS SEM GENERO E NORMALIZADOS
 XNOR_semgereno = dadosNOR_Sem_Genero.drop('Salary', axis=1)
 yNOR_SemGenero = dadosNOR_Sem_Genero['Salary']
-
-# DADOS SEM TÍTULO E NORMALIZADOS
-#XNOR_SemTitulo = dados_Sem_JobTitle.drop('Salary', axis=1)
-#yNOR_SemTitulo = dados_Sem_JobTitle['Salary']
 
 # DADOS COM TODAS AS VARIÁVEIS E NORMALIZADAS
 XNOR = dadosNOR.drop('Salary', axis=1)
@@ -569,10 +550,75 @@ print("MSE:", DTR_NN_mse)
 print("RMSE:", DTR_NN_rmse)
 
 """# Resultados e Discuções
-Posteriormente, será feita a transformação de dados: Nesta etapa, os dados podem precisar ser transformados ou reformatados para melhor se adequarem às necessidades da análise. Isso pode envolver a normalização ou padronização de valores, codificação de variáveis categóricas, discretização de dados contínuos, entre outros processos.
+
 """
 
+resultados = {
+    'rlmae': [RL_NN_SG_mse, RL_NN_mse, RL_N_SG_mse, RL_N_mse],
+    'rlrmae': [RL_NN_SG_rmse, RL_NN_rmse, RL_N_SG_rmse, RL_N_rmse],
+    'svrmae': [SVM_NN_SG_mse, SVM_NN_mse, SVM_N_SG_mse, SVM_NN_mse],
+    'svrrmae': [SVM_NN_SG_rmse, SVM_NN_rmse, SVM_N_SG_rmse, SVM_NN_rmse],
+    'dtrmae': [DTR_NN_SG_mse, DTR_NN_mse, DTR_N_SG_mse, DTR_NN_mse],
+    'dtrrmae': [DTR_NN_SG_rmse, DTR_NN_rmse, DTR_N_SG_rmse, DTR_NN_rmse]
+}
 
+resultados = pd.DataFrame(resultados)
 
+resultados
 
+df = resultados
 
+# Plotar o DataFrame como uma tabela
+fig, ax = plt.subplots(figsize=(8, 2))
+ax.axis('off')
+ax.table(cellText=df.values, colLabels=df.columns, cellLoc='center', loc='center')
+
+# Salvar a imagem como um arquivo PNG
+#plt.savefig('resultados.png', dpi=400, bbox_inches='tight')
+
+melhordesempenho = RL_N_mse
+piordesempenho = SVM_NN_SG_mse
+
+"""# Melhor modelo treinado."""
+
+X_train, X_test, y_train, y_test = train_test_split(XNOR_semgereno, yNOR_SemGenero, test_size=0.2, random_state=42)
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+y_pred_NSG_RL = regressor.predict(X_test)
+
+"""# Função para prevê uma estimativa com novos valores"""
+
+def prever_salario(modelo):
+    # Coletar informações pessoais
+    idade = int(input("Digite a idade: "))
+    experiencia = float(input("Digite o número de anos de experiência: "))
+    educacao = input("Digite o nível de educação (Bachelor's/Master's/PhD): ")
+    genero = input("Digite o gênero (Female/Male): ")
+    cargo = input("Digite a categoria do cargo (Director/Junior/Outros/Senior): ")
+
+    # Criar uma matriz de entrada binária
+    valores = {
+        "Age": idade,
+        "Years of Experience": experiencia,
+        "Education Level_Bachelor's": 0,
+        "Education Level_Master's": 0,
+        "Education Level_PhD": 0,
+        "Gender_Female": 0,
+        "Gender_Male": 0,
+        "Categoria_titulo_trabalho_Director": 0,
+        "Categoria_titulo_trabalho_Junior": 0,
+        "Categoria_titulo_trabalho_Outros": 0,
+        "Categoria_titulo_trabalho_Senior": 0
+    }
+
+    valores[educacao] = 1
+    valores[genero] = 1
+    valores["Categoria_titulo_trabalho_" + cargo] = 1
+
+    X = np.array(list(valores.values())).reshape(1, -1)
+
+    # Fazer a previsão usando o modelo treinado (modelo)
+    salario_previsto = modelo.predict(X)
+
+    # Retornar o valor previsto de salário
+    return salario_previsto[0]
