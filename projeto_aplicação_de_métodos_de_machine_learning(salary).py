@@ -80,7 +80,7 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.svm import SVR
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.metrics import mean_squared_error
 
 dados = pd.read_csv("/content/Salary Data.csv")
 
@@ -554,15 +554,18 @@ print("RMSE:", DTR_NN_rmse)
 """
 
 resultados = {
-    'rlmae': [RL_NN_SG_mse, RL_NN_mse, RL_N_SG_mse, RL_N_mse],
-    'rlrmae': [RL_NN_SG_rmse, RL_NN_rmse, RL_N_SG_rmse, RL_N_rmse],
-    'svrmae': [SVM_NN_SG_mse, SVM_NN_mse, SVM_N_SG_mse, SVM_NN_mse],
-    'svrrmae': [SVM_NN_SG_rmse, SVM_NN_rmse, SVM_N_SG_rmse, SVM_NN_rmse],
-    'dtrmae': [DTR_NN_SG_mse, DTR_NN_mse, DTR_N_SG_mse, DTR_NN_mse],
-    'dtrrmae': [DTR_NN_SG_rmse, DTR_NN_rmse, DTR_N_SG_rmse, DTR_NN_rmse]
+    'conjunto_usado': ['n_norm_sem_genero', 'n_norm_com_genero', 'norm_sem_genero', 'norm_com_genero'],
+    'mae(Regressao_linear)': [RL_NN_SG_mse, RL_NN_mse, RL_N_SG_mse, RL_N_mse],
+    'rmae(Regressao_linear)': [RL_NN_SG_rmse, RL_NN_rmse, RL_N_SG_rmse, RL_N_rmse],
+    'mae(svr)': [SVM_NN_SG_mse, SVM_NN_mse, SVM_N_SG_mse, SVM_NN_mse],
+    'rmae(svr)': [SVM_NN_SG_rmse, SVM_NN_rmse, SVM_N_SG_rmse, SVM_NN_rmse],
+    'mae(DecissionTreeRegressor)': [DTR_NN_SG_mse, DTR_NN_mse, DTR_N_SG_mse, DTR_NN_mse],
+    'rmae(DecissionTreeRegressor)': [DTR_NN_SG_rmse, DTR_NN_rmse, DTR_N_SG_rmse, DTR_NN_rmse]
 }
 
 resultados = pd.DataFrame(resultados)
+
+#resultadosf = resultados.rename(index={0: 'n_norm_sem_genero', 1: 'n_norm_com_genero', 2: 'norm_sem_genero', 3: 'norm_com_genero'})
 
 resultados
 
@@ -573,52 +576,5 @@ fig, ax = plt.subplots(figsize=(8, 2))
 ax.axis('off')
 ax.table(cellText=df.values, colLabels=df.columns, cellLoc='center', loc='center')
 
-# Salvar a imagem como um arquivo PNG
-#plt.savefig('resultados.png', dpi=400, bbox_inches='tight')
-
-melhordesempenho = RL_N_mse
-piordesempenho = SVM_NN_SG_mse
-
-"""# Melhor modelo treinado."""
-
-X_train, X_test, y_train, y_test = train_test_split(XNOR_semgereno, yNOR_SemGenero, test_size=0.2, random_state=42)
-regressor = LinearRegression()
-regressor.fit(X_train, y_train)
-y_pred_NSG_RL = regressor.predict(X_test)
-
-"""# Função para prevê uma estimativa com novos valores"""
-
-def prever_salario(modelo):
-    # Coletar informações pessoais
-    idade = int(input("Digite a idade: "))
-    experiencia = float(input("Digite o número de anos de experiência: "))
-    educacao = input("Digite o nível de educação (Bachelor's/Master's/PhD): ")
-    genero = input("Digite o gênero (Female/Male): ")
-    cargo = input("Digite a categoria do cargo (Director/Junior/Outros/Senior): ")
-
-    # Criar uma matriz de entrada binária
-    valores = {
-        "Age": idade,
-        "Years of Experience": experiencia,
-        "Education Level_Bachelor's": 0,
-        "Education Level_Master's": 0,
-        "Education Level_PhD": 0,
-        "Gender_Female": 0,
-        "Gender_Male": 0,
-        "Categoria_titulo_trabalho_Director": 0,
-        "Categoria_titulo_trabalho_Junior": 0,
-        "Categoria_titulo_trabalho_Outros": 0,
-        "Categoria_titulo_trabalho_Senior": 0
-    }
-
-    valores[educacao] = 1
-    valores[genero] = 1
-    valores["Categoria_titulo_trabalho_" + cargo] = 1
-
-    X = np.array(list(valores.values())).reshape(1, -1)
-
-    # Fazer a previsão usando o modelo treinado (modelo)
-    salario_previsto = modelo.predict(X)
-
-    # Retornar o valor previsto de salário
-    return salario_previsto[0]
+# Salvar a imagem como um arquivo PNG com melhor qualidade
+plt.savefig('RESULTADOS', dpi=1000 , bbox_inches='tight')
