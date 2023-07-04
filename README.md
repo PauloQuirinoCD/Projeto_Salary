@@ -1,5 +1,5 @@
 # Projeto_Salary
-## Primeira produção academica, aplicação de modelo de aprendizagem de maquina.
+## Primeira produção academica, aplicação de modelo de aprendizagem de máquina.
 Foi criado um modelo de Regressão capaz de estimar o valor de salário na área de Tecnologia.
 Com o objetivo de criar um modelo preditivo que fosse capaz de predizer com novos dados uma estimativa de salário baseado nas variáveis fornecidas pelo conjunto de dados. 
 
