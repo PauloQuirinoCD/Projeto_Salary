@@ -74,6 +74,7 @@ Importando todas as biliotecas necessárias para o desenvolvimento do projeto
 
 import numpy as np
 import pandas as pd
+import plotly.express as px
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
@@ -569,12 +570,7 @@ resultados = pd.DataFrame(resultados)
 
 resultados
 
-df = resultados
+# Foi utilizado a biblioteca plotly para a visualização interativa dos resultados
 
-# Plotar o DataFrame como uma tabela
-fig, ax = plt.subplots(figsize=(8, 2))
-ax.axis('off')
-ax.table(cellText=df.values, colLabels=df.columns, cellLoc='center', loc='center')
+px.bar(resultados, x=['mae(Regressao_linear)', 'rmae(Regressao_linear)', 'mae(svr)', 'rmae(svr)', 'mae(DecissionTreeRegressor)', 'rmae(DecissionTreeRegressor)'], y='conjunto_usado')
 
-# Salvar a imagem como um arquivo PNG com melhor qualidade
-plt.savefig('RESULTADOS', dpi=1000 , bbox_inches='tight')
