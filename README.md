@@ -8,7 +8,7 @@ Apesar de não ser uma área nova, a demanda por profissionais ainda permanece c
 Dado o déficit de mão de obra, as profissões relacionadas a área de tecnologia possuem um bom atrativo com relação a média salarial, em sua maioria. 
 Para este projeto foi criado um modelo proditivo, que nós forneca uma estimativa do salarial para trabalhadores da área de tecnologias, de acordo com algumas variáveis.
 
-As variáveis utilizadas representa informações como idade, sexo, nível educacional, cargo, anos de experiência e salário, 
+As variáveis utilizadas representam informações como idade, sexo, nível educacional, cargo, anos de experiência e salário, 
 o arquivo está no formato ".csv" encontrado aqui: [Cojunto de dados](https://www.kaggle.com/datasets/rkiattisak/salaly-prediction-for-beginer/code)
 
 As metodologias e métodos ultilizada no desenvolvimento do projeto
@@ -23,7 +23,7 @@ Algoritmos Avaliados:
 LinearRegression, SVR(Support Vector Regression) e DecisionTreeRegressor
 
 Métrica utilizadas:
-mean_squared_error, mean_absolute_error
+mean_squared_error, sqrt(mean_squared_error)
 
 O código comentado, juntamente com os resultados a apresentação encontados aqui: [Repositório](https://github.com/PauloQuirinoCD/Projeto_Salary/tree/main)
 
