@@ -25,7 +25,7 @@ LinearRegression, SVR(Support Vector Regression) e DecisionTreeRegressor
 Métrica utilizadas:
 mean_squared_error, mean_absolute_error
 
-O código comentado, juntamente com os resultados a apresentação encontados aqui: 
+O código comentado, juntamente com os resultados a apresentação encontados aqui: [Repositório](https://github.com/PauloQuirinoCD/Projeto_Salary/tree/main)
 
 
 
